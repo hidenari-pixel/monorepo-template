@@ -1,0 +1,16 @@
+{
+	"packageManager": "pnpm@10.23.0",
+	"scripts": {
+		"build": "turbo build",
+		"typecheck": "turbo typecheck",
+		"format-and-lint": "turbo format-and-lint",
+		"format-and-lint:fix": "turbo format-and-lint:fix",
+		"dev": "turbo dev"
+	},
+	"dependencies": {
+		"sst": "3.17.25"
+	},
+	"devDependencies": {
+		"turbo": "^2.7.2"
+	}
+}

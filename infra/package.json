@@ -1,0 +1,28 @@
+{
+  "name": "infra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy:dev": "sst deploy --stage dev",
+    "deploy:prd": "sst deploy --stage prd",
+    "remove:dev": "sst remove --stage dev",
+    "remove:prd": "sst remove --stage prd",
+    "typecheck": "tsc --noEmit",
+    "format-and-lint": "biome check",
+    "format-and-lint:fix": "biome check --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.23.0",
+  "devDependencies": {
+    "@acme/biome": "workspace:*",
+    "@biomejs/biome": "2.3.10",
+    "@cloudflare/workers-types": "4.20251231.0",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "sst": "3.17.25"
+  }
+}

@@ -1,0 +1,17 @@
+{
+	"extends": ["@acme/biome/biome.json"],
+	"vcs": {
+		"enabled": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**/src/**/*",
+			"**/.vscode/**/*",
+			"**/index.html",
+			"**/vite.config.js",
+			"!**/src/routeTree.gen.ts",
+			"!**/src/styles.css"
+		]
+	}
+}

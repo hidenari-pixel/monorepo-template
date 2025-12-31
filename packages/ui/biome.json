@@ -1,0 +1,12 @@
+{
+	"extends": ["@acme/biome/biome.json"],
+	"vcs": {
+		"enabled": false
+	},
+	"css": {
+		"parser": {
+			"cssModules": true,
+			"tailwindDirectives": true
+		}
+	}
+}

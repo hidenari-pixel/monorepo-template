@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    },
+    "format-and-lint": {
+      "dependsOn": ["^format-and-lint"]
+    },
+    "format-and-lint:fix": {
+      "dependsOn": ["^format-and-lint:fix"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}
