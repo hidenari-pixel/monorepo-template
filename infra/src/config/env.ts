@@ -1,20 +1,19 @@
-
-type Stage = "dev" | "prd"
+type Stage = "dev" | "prd";
 interface Env {
-  stage: Stage;
+	stage: Stage;
 }
 
 if (!["dev", "prd"].includes($app.stage)) {
-  throw new Error(`Invalid stage: ${$app.stage}`);
+	throw new Error(`Invalid stage: ${$app.stage}`);
 }
 
 const ENV = {
-  dev: {
-    stage: "dev",
-  },
-  prd: {
-    stage: "prd",
-  },
+	dev: {
+		stage: "dev",
+	},
+	prd: {
+		stage: "prd",
+	},
 } as const satisfies Record<Stage, Env>;
 
-export const env = ENV[$app.stage as Stage]
+export const env = ENV[$app.stage as Stage];
