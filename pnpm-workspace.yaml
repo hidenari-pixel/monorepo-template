@@ -2,3 +2,6 @@ packages:
   - "apps/*"
   - "packages/*"
   - "infra"
+
+catalog:
+  "@typescript/native-preview": 7.0.0-dev.20260501.1

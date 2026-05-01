@@ -1,0 +1,10 @@
+[tools]
+pnpm = "10.33.2"
+node = "24.15.0"
+
+[tasks.setup]
+description = "Install dependencies and setup the project"
+run = """
+pnpm install
+pnpm --filter infra sst:install
+"""

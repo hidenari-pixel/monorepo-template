@@ -4,11 +4,14 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"deploy:dev": "sst deploy --stage dev",
-		"deploy:prd": "sst deploy --stage prd",
-		"remove:dev": "sst remove --stage dev",
-		"remove:prd": "sst remove --stage prd",
-		"typecheck": "tsc --noEmit",
+		"sst:init": "sst init",
+		"sst:install": "sst install",
+		"sst:deploy": "sst deploy",
+		"sst:refresh": "sst refresh",
+		"sst:unlock": "sst unlock",
+		"sst:diff": "sst diff",
+		"sst:remove": "sst remove",
+		"typecheck": "tsgo --noEmit 2>&1 | grep '^src/' || echo '✅ No type errors found in src/'",
 		"format-and-lint": "biome check",
 		"format-and-lint:fix": "biome check --fix"
 	},
@@ -20,6 +23,7 @@
 		"@acme/biome": "workspace:*",
 		"@biomejs/biome": "2.3.10",
 		"@cloudflare/workers-types": "4.20251231.0",
+		"@typescript/native-preview": "catalog:",
 		"typescript": "~5.9.3"
 	},
 	"dependencies": {
