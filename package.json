@@ -5,6 +5,7 @@
 		"typecheck": "turbo typecheck",
 		"format-and-lint": "turbo format-and-lint",
 		"format-and-lint:fix": "turbo format-and-lint:fix",
+		"restore:db": "sh ./scripts/restore-db.sh",
 		"dev": "turbo dev"
 	},
 	"dependencies": {
