@@ -9,10 +9,10 @@
 		"ignoreUnknown": false
 	},
 	"formatter": {
-    "enabled": true,
-    "indentStyle": "tab",
-    "indentWidth": 2
-  },
+		"enabled": true,
+		"indentStyle": "space",
+		"indentWidth": 2
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {

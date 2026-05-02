@@ -9,6 +9,7 @@
     "**/routeTree.gen.ts": true
   },
   "editor.formatOnSave": true,
+  "editor.tabSize": 2,
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
