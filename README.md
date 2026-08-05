@@ -1,17 +1,17 @@
 # Monorepo Template
 
-`TypeScript + pnpm workspaces + Turborepo` によるモノレポテンプレート。
+`TypeScript 7 + pnpm workspaces + Turborepo` によるモノレポテンプレート。
 pnpmとnodeのバージョンは `mise` で管理しています。
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | TanStack Start (React SPA) |
-| Backend | Hono |
-| UI | shadcn/ui + Tailwind CSS v4 |
-| Infra | SST v3 + Cloudflare |
-| Tools | Biome, Storybook |
+| Layer    | Technology                  |
+| -------- | --------------------------- |
+| Frontend | TanStack Start (React SPA)  |
+| Backend  | Hono                        |
+| UI       | shadcn/ui + Tailwind CSS v4 |
+| Infra    | SST v4 + Cloudflare         |
+| Tools    | Oxlint, Oxfmt, Storybook    |
 
 ## Structure
 
@@ -22,7 +22,6 @@ apps/
 packages/
   ui/           # Shared UI components (shadcn/ui)
   common/       # Shared types & utilities
-  biome/        # Shared Biome config
 infra/          # SST deployment config
 ```
 
@@ -58,20 +57,33 @@ cd packages/ui && pnpm sb:dev
 cd infra
 
 # Deploy to dev
-pnpm deploy:dev
+pnpm sst:deploy --stage dev
 
 # Deploy to production
-pnpm deploy:prd
+pnpm sst:deploy --stage prd
 ```
 
 Requires Cloudflare API token. Run `npx sst install` for initial setup.
 
+### Migrating an existing SST v3 stage
+
+SST v4 state migration is one-way. Review and migrate each deployed stage before deploying it with v4:
+
+```bash
+cd infra
+pnpm sst:diff --stage <stage>
+pnpm sst:refresh --stage <stage>
+pnpm sst:deploy --stage <stage>
+```
+
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start all dev servers |
-| `pnpm build` | Build all packages |
-| `pnpm typecheck` | Run type checking |
-| `pnpm format-and-lint` | Run Biome |
-| `pnpm format-and-lint:fix` | Fix lint issues |
+| Command           | Description                 |
+| ----------------- | --------------------------- |
+| `pnpm dev`        | Start all dev servers       |
+| `pnpm build`      | Build all packages          |
+| `pnpm typecheck`  | Run type checking           |
+| `pnpm format`     | Check formatting with Oxfmt |
+| `pnpm format:fix` | Format files with Oxfmt     |
+| `pnpm lint`       | Lint with Oxlint            |
+| `pnpm lint:fix`   | Fix lint issues with Oxlint |

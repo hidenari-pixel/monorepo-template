@@ -1,9 +1,0 @@
-{
-  "extends": ["@acme/biome/biome.json"],
-  "vcs": {
-    "enabled": false
-  },
-  "files": {
-    "includes": ["src/**", "*.json", "*.jsonc", "*.ts"]
-  }
-}

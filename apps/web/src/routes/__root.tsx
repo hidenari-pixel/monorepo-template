@@ -5,7 +5,6 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import Header from "../components/Header";
 
 import appCss from "../styles.css?url";
-
 import "@acme/ui/globals.css";
 
 export const Route = createRootRoute({

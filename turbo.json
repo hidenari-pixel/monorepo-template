@@ -7,11 +7,19 @@
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
-    "format-and-lint": {
-      "dependsOn": ["^format-and-lint"]
+    "format": {
+      "dependsOn": ["^format"]
     },
-    "format-and-lint:fix": {
-      "dependsOn": ["^format-and-lint:fix"]
+    "format:fix": {
+      "dependsOn": ["^format:fix"],
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "cache": false
     },
     "dev": {
       "persistent": true,

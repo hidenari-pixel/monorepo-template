@@ -1,32 +1,34 @@
 {
-	"name": "infra",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"sst:init": "sst init",
-		"sst:install": "sst install",
-		"sst:deploy": "sst deploy",
-		"sst:refresh": "sst refresh",
-		"sst:unlock": "sst unlock",
-		"sst:diff": "sst diff",
-		"sst:remove": "sst remove",
-		"typecheck": "tsgo --noEmit 2>&1 | grep '^src/' || echo '✅ No type errors found in src/'",
-		"format-and-lint": "biome check",
-		"format-and-lint:fix": "biome check --fix"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"packageManager": "pnpm@10.23.0",
-	"devDependencies": {
-		"@acme/biome": "workspace:*",
-		"@biomejs/biome": "2.3.10",
-		"@cloudflare/workers-types": "4.20251231.0",
-		"@typescript/native-preview": "catalog:",
-		"typescript": "~5.9.3"
-	},
-	"dependencies": {
-		"sst": "3.17.25"
-	}
+  "name": "infra",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "sst:init": "sst init",
+    "sst:install": "sst install",
+    "sst:deploy": "sst deploy",
+    "sst:refresh": "sst refresh",
+    "sst:unlock": "sst unlock",
+    "sst:diff": "sst diff",
+    "sst:remove": "sst remove",
+    "typecheck": "tsgo --noEmit 2>&1 | grep '^src/' || echo '✅ No type errors found in src/'",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt --write",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
+  },
+  "dependencies": {
+    "sst": "catalog:"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20251231.0",
+    "@typescript/native-preview": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@11.20.0"
 }

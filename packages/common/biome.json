@@ -1,6 +1,0 @@
-{
-  "extends": ["@acme/biome/biome.json"],
-  "vcs": {
-    "enabled": false
-  }
-}
