@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": [
+    "infra/src/config/env.ts",
+    "packages/common/src/utils/index.ts",
+    "packages/ui/src/components/index.ts"
+  ],
+  "ignoreDependencies": ["@swc/core"],
+  "workspaces": {
+    "apps/bff": {
+      "ignoreDependencies": ["cloudflare"]
+    },
+    "apps/web": {
+      "ignoreDependencies": ["wrangler"]
+    },
+    "infra": {
+      "ignoreDependencies": ["@cloudflare/workers-types"]
+    }
+  }
+}

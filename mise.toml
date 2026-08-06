@@ -6,5 +6,6 @@ node = "24.15.0"
 description = "Install dependencies and setup the project"
 run = """
 pnpm install
+pnpm --filter @acme/ui exec playwright install chromium
 pnpm --filter infra sst:install
 """

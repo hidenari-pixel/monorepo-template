@@ -2,21 +2,30 @@
   "scripts": {
     "build": "turbo build",
     "typecheck": "turbo typecheck",
-    "format": "turbo format",
-    "format:fix": "turbo format:fix",
-    "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix",
-    "prepare": "./scripts/prepare-effect.sh",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "format": "oxfmt --check README.md package.json pnpm-workspace.yaml turbo.json vitest.config.ts knip.json renovate.json lefthook.yml dependency-cruiser.config.cjs .github && turbo format",
+    "format:fix": "oxfmt --write README.md package.json pnpm-workspace.yaml turbo.json vitest.config.ts knip.json renovate.json lefthook.yml dependency-cruiser.config.cjs .github && turbo format:fix",
+    "lint": "oxlint vitest.config.ts dependency-cruiser.config.cjs && turbo lint",
+    "lint:fix": "oxlint --fix vitest.config.ts dependency-cruiser.config.cjs && turbo lint:fix",
+    "knip": "knip",
+    "deps:check": "dependency-cruiser --config dependency-cruiser.config.cjs apps/bff/src",
+    "check": "pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm knip && pnpm deps:check",
+    "prepare": "lefthook install && ./scripts/prepare-effect.sh",
     "restore:db": "sh ./scripts/restore-db.sh",
     "dev": "turbo dev"
   },
-  "dependencies": {
-    "sst": "catalog:"
-  },
   "devDependencies": {
+    "@swc/core": "catalog:",
+    "@vitest/coverage-istanbul": "catalog:",
+    "dependency-cruiser": "catalog:",
+    "knip": "catalog:",
+    "lefthook": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
-    "turbo": "^2.7.2"
+    "turbo": "^2.7.2",
+    "vitest": "catalog:"
   },
   "packageManager": "pnpm@11.20.0"
 }
