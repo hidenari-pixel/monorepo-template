@@ -5,11 +5,13 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "build": "esbuild src/index.ts --bundle --format=esm --outfile=dist/_worker.js --minify",
-    "typecheck": "tsgo --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
     "format": "oxfmt --check",
     "format:fix": "oxfmt --write",
     "lint": "oxlint",
@@ -20,17 +22,20 @@
   },
   "dependencies": {
     "@acme/db": "workspace:*",
-    "effect": "^3.22.1",
+    "effect": "catalog:",
     "hono": "^4.11.3"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20251231.0",
-    "@typescript/native-preview": "catalog:",
+    "@cloudflare/vitest-pool-workers": "catalog:",
+    "@cloudflare/workers-types": "catalog:",
+    "@effect/vitest": "catalog:",
     "esbuild": "^0.25.0",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "tsx": "^4.21.0",
-    "wrangler": "^4.4.0"
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "wrangler": "catalog:"
   },
   "packageManager": "pnpm@11.20.0"
 }

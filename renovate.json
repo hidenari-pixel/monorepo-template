@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "minimumReleaseAge": "1 day",
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "description": "Group Effect packages",
+      "matchPackageNames": ["effect", "/^@effect\\//"],
+      "groupName": "Effect"
+    },
+    {
+      "description": "Group Cloudflare tooling",
+      "matchPackageNames": ["wrangler", "/^@cloudflare\\//", "miniflare", "workerd"],
+      "groupName": "Cloudflare"
+    },
+    {
+      "description": "Group TanStack packages",
+      "matchPackageNames": ["/^@tanstack\\//"],
+      "groupName": "TanStack"
+    },
+    {
+      "description": "Group Storybook and Vitest packages",
+      "matchPackageNames": ["storybook", "/^@storybook\\//", "vitest", "/^@vitest\\//"],
+      "groupName": "Storybook and Vitest"
+    },
+    {
+      "description": "Group Oxc tools",
+      "matchPackageNames": ["oxfmt", "oxlint"],
+      "groupName": "Oxc"
+    },
+    {
+      "description": "Keep SST updates isolated",
+      "matchPackageNames": ["sst"],
+      "groupName": "SST"
+    },
+    {
+      "description": "Automerge low-risk development dependency updates",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    }
+  ]
+}

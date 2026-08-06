@@ -5,7 +5,6 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "index.js",
   "scripts": {
     "sst:init": "sst init",
     "sst:install": "sst install",
@@ -14,7 +13,7 @@
     "sst:unlock": "sst unlock",
     "sst:diff": "sst diff",
     "sst:remove": "sst remove",
-    "typecheck": "tsgo --noEmit 2>&1 | grep '^src/' || echo '✅ No type errors found in src/'",
+    "typecheck": "tsc --noEmit 2>&1 | grep '^src/' || echo '✅ No type errors found in src/'",
     "format": "oxfmt --check",
     "format:fix": "oxfmt --write",
     "lint": "oxlint",
@@ -24,8 +23,7 @@
     "sst": "catalog:"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20251231.0",
-    "@typescript/native-preview": "catalog:",
+    "@cloudflare/workers-types": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "typescript": "catalog:"

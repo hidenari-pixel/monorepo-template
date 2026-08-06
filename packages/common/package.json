@@ -5,13 +5,12 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "index.js",
   "exports": {
     "./types": "./src/types/index.ts",
     "./utils": "./src/utils/date.ts"
   },
   "scripts": {
-    "typecheck": "tsgo --noEmit",
+    "typecheck": "tsc --noEmit",
     "format": "oxfmt --check",
     "format:fix": "oxfmt --write",
     "lint": "oxlint",
@@ -22,9 +21,9 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@typescript/native-preview": "catalog:",
     "oxfmt": "catalog:",
-    "oxlint": "catalog:"
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   },
   "packageManager": "pnpm@11.20.0"
 }

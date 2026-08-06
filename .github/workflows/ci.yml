@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Quality
+    if: github.event.label.name == 'trigger-ci'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: ./.github/actions/setup-pnpm
+
+      - name: Install Chromium
+        run: pnpm --filter @acme/ui exec playwright install --with-deps chromium
+
+      - name: Check formatting
+        run: pnpm format
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Check unused code and dependencies
+        run: pnpm knip
+
+      - name: Check dependency boundaries
+        run: pnpm deps:check
+
+      - name: Build
+        run: pnpm build

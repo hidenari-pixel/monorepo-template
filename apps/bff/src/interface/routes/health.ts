@@ -2,7 +2,7 @@ import type { DB } from "@acme/db";
 import { Data, Effect } from "effect";
 import { Hono } from "hono";
 
-import type { HonoEnv } from "../types";
+import type { HonoEnv } from "../../types";
 
 const app = new Hono<HonoEnv>();
 

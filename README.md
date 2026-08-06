@@ -5,13 +5,13 @@ pnpmとnodeのバージョンは `mise` で管理しています。
 
 ## Tech Stack
 
-| Layer    | Technology                  |
-| -------- | --------------------------- |
-| Frontend | TanStack Start (React SPA)  |
-| Backend  | Hono                        |
-| UI       | shadcn/ui + Tailwind CSS v4 |
-| Infra    | SST v4 + Cloudflare         |
-| Tools    | Oxlint, Oxfmt, Storybook    |
+| Layer    | Technology                                 |
+| -------- | ------------------------------------------ |
+| Frontend | TanStack Start (React SPA)                 |
+| Backend  | Hono                                       |
+| UI       | shadcn/ui + Tailwind CSS v4                |
+| Infra    | SST v4 + Cloudflare                        |
+| Tools    | Oxlint, Oxfmt, Vitest, Storybook, Lefthook |
 
 ## Structure
 
@@ -33,6 +33,9 @@ mise install
 
 # Install dependencies
 pnpm install
+
+# Install the browser used by UI tests
+pnpm --filter @acme/ui exec playwright install chromium
 
 # Start development servers
 pnpm dev
@@ -78,12 +81,28 @@ pnpm sst:deploy --stage <stage>
 
 ## Commands
 
-| Command           | Description                 |
-| ----------------- | --------------------------- |
-| `pnpm dev`        | Start all dev servers       |
-| `pnpm build`      | Build all packages          |
-| `pnpm typecheck`  | Run type checking           |
-| `pnpm format`     | Check formatting with Oxfmt |
-| `pnpm format:fix` | Format files with Oxfmt     |
-| `pnpm lint`       | Lint with Oxlint            |
-| `pnpm lint:fix`   | Fix lint issues with Oxlint |
+| Command              | Description                        |
+| -------------------- | ---------------------------------- |
+| `pnpm dev`           | Start all dev servers              |
+| `pnpm build`         | Build all packages                 |
+| `pnpm typecheck`     | Run type checking                  |
+| `pnpm test`          | Run all Vitest projects            |
+| `pnpm test:watch`    | Run tests in watch mode            |
+| `pnpm test:coverage` | Run tests with coverage            |
+| `pnpm format`        | Check formatting with Oxfmt        |
+| `pnpm format:fix`    | Format files with Oxfmt            |
+| `pnpm lint`          | Lint with Oxlint                   |
+| `pnpm lint:fix`      | Fix lint issues with Oxlint        |
+| `pnpm knip`          | Find unused files and dependencies |
+| `pnpm deps:check`    | Check BFF dependency boundaries    |
+| `pnpm check`         | Run all quality checks             |
+
+## Quality gates
+
+- Vitest Projects runs the BFF, web, and UI test environments from the root.
+- BFF tests run in the Cloudflare Workers runtime with an isolated D1 database.
+- UI tests run in Chromium using Vitest Browser Mode and Playwright.
+- Lefthook formats and lints staged files before commit, then runs affected typechecks and tests before push.
+- Knip detects unused code and dependencies, while dependency-cruiser enforces BFF architecture boundaries.
+- Adding the `trigger-ci` label to a pull request runs formatting, linting, typechecking, tests, static checks, and builds in GitHub Actions.
+- Renovate groups related dependency updates and maintains the pnpm catalog.

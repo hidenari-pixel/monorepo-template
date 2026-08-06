@@ -1,0 +1,18 @@
+pre-commit:
+  jobs:
+    - name: format staged files
+      glob: "*.{css,html,js,json,jsonc,jsx,md,mjs,ts,tsx,yaml,yml}"
+      run: pnpm exec oxfmt --write {staged_files}
+      stage_fixed: true
+    - name: lint staged source files
+      glob: "*.{js,jsx,mjs,ts,tsx}"
+      run: pnpm exec oxlint --fix {staged_files}
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: typecheck affected packages
+      run: pnpm turbo typecheck --affected
+    - name: test affected packages
+      run: pnpm turbo test --affected

@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 
+import health from "./interface/routes/health";
 import { dbMiddleware } from "./middlewares/db";
-import health from "./routes/health";
 import type { HonoEnv } from "./types";
 
 const app = new Hono<HonoEnv>();
