@@ -14,7 +14,8 @@
     "check": "pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm knip && pnpm deps:check",
     "prepare": "lefthook install && ./scripts/prepare-effect.sh",
     "restore:db": "sh ./scripts/restore-db.sh",
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "ui:add": "pnpm dlx shadcn@latest add --cwd packages/ui"
   },
   "devDependencies": {
     "@swc/core": "catalog:",
